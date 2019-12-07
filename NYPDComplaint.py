@@ -46,11 +46,13 @@ df['burglary'] = (df.ofns_desc == 'BURGLARY')
 df['misdemenor'] = (df.law_cat_cd == 'MISDEMEANOR')
 df['felony'] = (df.law_cat_cd == 'FELONY')
 df['violation'] = (df.law_cat_cd == 'VIOLATION')
-#df['addr_pct_cd'] is stored as string not integer
+
+df['addr_pct_cd'] = df['addr_pct_cd'].astype(int)
+
 df = df[
    ['addr_pct_cd', 'petit_larceny', 'harrassment_2', 'assault_3', 'criminal_mischief', 'grand_larceny', 'public_order', 'felony_assault', 'dangerous_drugs', 'penal_law', 'robbery', 'burglary', 'misdemenor', 'felony', 'violation']
    ].groupby(['addr_pct_cd'], as_index=False).sum()
 
 print(df.sample(10), df.shape)
 
-df.to_csv('2018_NYPD_Complaints.csv')
+df.to_csv('2018_NYPD_Complaints.csv', index=False)

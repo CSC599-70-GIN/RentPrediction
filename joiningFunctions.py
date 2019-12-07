@@ -1,11 +1,12 @@
 import pandas as pd
-
-def zipToPrecint(zip: int) -> int:
+		
+def joinRentNYPD(rentDf, nypdDf):
 	"""
 	Takes in the all NYC zipcodes in the rent dataset and returns the NYCPD precinct associated with it.
-	Using this website: https://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page
+	Uses this website to match zipcodes with precints: https://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page
+	Join the rent data with NYPD complaint data.
 	"""
-	zip_codes = {
+	rentDf['precinct'] = rentDf['addr_zip'].map({
 		11226:70,
 		10013:1,
 		10022:17,
@@ -155,15 +156,7 @@ def zipToPrecint(zip: int) -> int:
 		10302:121,
 		10460:42,
 		11423:103
-	}
+	})
 	
-	try:
-		return zip_codes[zip]
-	except KeyError:
-		return None
-		
-def joinRentNYPD(rentDf, nypdDf):
-	"""
-	Join the rent data with NYPD data.
-	"""
-	pass
+	rentDf = rentDf.merge(right=nypdDf, how='left', left_on='precinct', right_on='addr_pct_cd')
+	return rentDf
