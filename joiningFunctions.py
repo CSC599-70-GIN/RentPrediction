@@ -155,8 +155,18 @@ def joinRentNYPD(rentDf, nypdDf):
 		10469:49,
 		10302:121,
 		10460:42,
-		11423:103
+		11423:103,
+		11356:109,
+		10314:121,
+		10305:122,
+		11413:105,
+		10470:47,
+		11363:111,
 	})
 	
 	rentDf = rentDf.merge(right=nypdDf, how='left', left_on='precinct', right_on='addr_pct_cd')
+	return rentDf
+	
+def jointRent311(rentDf, incidentDf):
+	rentDf = rentDf.merge(right=incidentDf, how='left', on='addr_zip')
 	return rentDf
