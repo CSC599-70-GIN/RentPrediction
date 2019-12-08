@@ -1,14 +1,18 @@
-1a. NYPD complaints and 311 service request data. We chose these datasets because we believe there is a correlation between the number of complaints and the rent prices.
+1a. We used two external datasets linked below: NYPD complaints and 311 service request data. We chose these datasets because we believe there is a correlation between the number of complaints and service requests and the rent prices. Typically the greater the number or severity of crimes in a neighborhood, the less people are willing to pay to live there.
 
-1b. No both of them are public datasets and don’t identify any people involved. However, it can be used to imply that certain groups of people are involved based on the crime data, and certain neighborhoods based on the 311 data.
+311 Service Requests: https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9
 
-2a. The features ‘year_built’, ‘addr_unit’, ‘min_to_subway’ , ‘unit’, ‘floornumber’, line had many missing values. We handled these features by removing those columns because these features didn’t seem to be worth the trouble of including in the model. Another feature called ‘bin’ was missing only one row in the train set so we just removed that row, two rows were also missing for ‘bin’ in submit2_df which we handled by filling them in with values we inferred they would based on the relationship between ‘bin’ and ‘bbl’. 
+NYPD Complaints: https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i
 
-2b. They weren’t too difficult to deal with since we just mostly choose to remove the rows that were missing or just removed the columns if there were too many missing and very rarely we choose to actually fill in the missing data with something.
+1b. We don’t believe this raises any ethical considerations as both datasets are publicly available and do not identify any specific people. Both datasets were also provided by government agencies. One ethical consideration that could be brought up is that if the complaint or service request data is used to generalize the characteristics of a neighborhood, but that is outside the scope of this project. 
+
+2a. The features ‘year_built’, ‘addr_unit’, ‘min_to_subway’ , ‘unit’, ‘floornumber’, and ‘line’ had many missing values. We removed these columns because we decided that any impact they could have would be insignificant. Another feature called ‘bin’ was missing only one row in the train set so we just removed that row, two rows were also missing for ‘bin’ in submit2_df which we handled by filling them in with values we inferred they would based on the relationship between ‘bin’ and ‘bbl’. 
+
+2b. They weren’t too difficult to deal with since we just mostly chose to remove the rows that were missing or just removed the columns if there were too many missing and very rarely did we choose to actually fill in the missing data with something.
 
 2c. Some of the columns have string as their type which can’t be used unless we convert them to integer.
 
-2d. There is a scatter plot in our notebook which graphs the relation between size sqft and the rent and you can see it as size sqft goes up so does rent. While there are problems with the distribution of data in the scatter plot you can still see the trend which shows there must be some kind of a relationship between the two.
+2d. There is a scatter plot in our notebook which graphs the relation between size sqft and the rent and you can see it as size sqft goes up so does rent. While there are problems with the distribution of data in the scatter plot you can still see the trend which shows there is a positive relationship between the two.
 
 3a. The five features that played the biggest role in our model were: ‘size_sqft’, ‘floor_count’, ‘bedrooms’, ‘bbl’, and ‘bin’. We didn’t create these features since they were already included in the StreetEasy dataset given to us. We know these features play a key role because we ran feature importances on our model which tells us which feature contributed the most to the model’s predictive power and these features are the top five contributors to our model.
 
