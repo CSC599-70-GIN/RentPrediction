@@ -1,3 +1,5 @@
+Jupyter Notebook: https://github.com/CSC599-70-GIN/RentPrediction/blob/master/main.ipynb
+
 1a. We used two external datasets linked below: NYPD complaints and 311 service request data. We chose these datasets because we believe there is a correlation between the number of complaints and service requests and the rent prices. Typically the greater the number or severity of crimes in a neighborhood, the less people are willing to pay to live there.
 
 311 Service Requests: https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9
