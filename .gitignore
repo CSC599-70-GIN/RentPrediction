@@ -1,8 +1,8 @@
 # Databases
-*.db # 
+*.db
 
 # Pycache
-__pycache__/ # use text/ for folders
+__pycache__/
 
 # Jupyter checkpoints
 .ipynb_checkpoints
